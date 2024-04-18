@@ -5,33 +5,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .graficos {
+            display: flex;
+            width: 1290px;
+            height: 800px;
+        }
+        .grafico {
+            width: 50%;
+            height: 500px;
+            text-align: center;
+            margin: 0 20px;
+
+        }
+
+    </style>
 </head>
 
 <body>
-    <div>
-        <canvas id="myChart"></canvas>
+    <div class="container">
+        <div class="graficos">
+            <div class="grafico">
+                <h1>Gráfico Chart Js - Linha</h1>
+                <canvas id="chartLine"></canvas>
+            </div>
+            <div class="grafico">
+                <h1>Gráfico Chart Js - Barra</h1>
+                <canvas id="chartBar"></canvas>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
-        const ctx = document.getElementById('myChart');
+        const line1 = document.getElementById('chartLine');
+        const bar1 = document.getElementById('chartBar');
 
-        new Chart(ctx, {
+
+        new Chart(line1, {
             type: 'line',
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
                 datasets: [
                     {
                         label: 'temperatura',
-                        data: [12, 19, 3, 5, 2, 3],
+                        data: [30, 29, 28, 25, 22, 23],
                         borderWidth: 1
                     },
                     {
                         label: 'umidade',
-                        data: [20, 29, 23, 25, 22, 23],
+                        data: [80, 82, 80, 85, 80, 83],
                         borderWidth: 1
                     }
+                    
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        new Chart(bar1, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
+                datasets: [
+                    {
+                        label: 'temperatura',
+                        data: [22, 24, 27, 23, 20, 18],
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'umidade',
+                        data: [90, 89, 93, 87, 88, 82],
+                        borderWidth: 1
+                    }
+                    
                 ]
             },
             options: {
